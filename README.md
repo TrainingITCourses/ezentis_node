@@ -16,17 +16,19 @@ npm install
 code .
 ```
 
+[Demo reference](https://github.com/AlbertoBasalo/xp-dev)
+
 ## Temario 12 horas
 
-1.    Introducción a node: instalación, ejecución  y ecosistema
+1.    Introducción a node: instalación, ejecución y ecosistema
 
-2.    Asincronimo: sistema de ficheros y llamadas http
+2.    Asynchronism: sistema de ficheros y llamadas http
 
 3.    Desarrollo de APIs Rest con Express
 
 4.    Middlewares para seguridad e instrumentación
 
-5.    Rutas compuestas y paramatros
+5.    Rutas compuestas y parámetros
 
 6.    Necesidad y uso de Sequelize como ORM
 
@@ -34,9 +36,9 @@ code .
 
 8.    Persistencia en PostgreSQL
 
-9.    Operaciones CRUD 
+9.    Operaciones CRUD
 
-10.   Pruebas 
+10.   Pruebas
 
 11.   Despliegue
 
