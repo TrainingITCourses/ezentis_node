@@ -66,6 +66,9 @@ const test = async () => {
   }
 };
 test();
+
+// To Do: use promises (async await)
+// const fs = require("fs").promises;
 ```
 
 ## 1.3 Desarrollo de APIs Rest con Express
