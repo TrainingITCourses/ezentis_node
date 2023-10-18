@@ -28,9 +28,9 @@ code .
 
 4.    Middlewares para seguridad e instrumentación
 
-5.    Rutas compuestas y parámetros
+5.    Control de rutas compuestas y parámetros
 
-6.    Necesidad y uso de Sequelize como ORM
+6.    Servicios y repositorios
 
 7.    Definición del modelo de datos code first
 
