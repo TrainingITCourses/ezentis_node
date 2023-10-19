@@ -9,8 +9,8 @@
   "scripts": {
     "start": "nodemon src/app.js",
     "dev": "nodemon --watch src src/app.js",
-    "test": "nodemon tests/index.js",
-    "dev:test": "nodemon --watch tests tests/index.js"
+    "test": "nodemon tests/root.js",
+    "dev:test": "nodemon --watch tests tests/root.js"
   },
   "keywords": [
     "node",

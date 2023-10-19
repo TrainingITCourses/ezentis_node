@@ -1,9 +1,10 @@
 const express = require("express");
 
-const routes = require("./routes");
+const routes = require("./api/routes");
 
 const app = express();
 
 routes(app, express);
 
-app.listen(3000, () => console.log("Listening on port 3000" + new Date()));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Listening on port ${PORT} at ${new Date()}`));
