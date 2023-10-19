@@ -1,7 +1,7 @@
 const axios = require("axios");
 const fs = require("fs").promises;
 
-const testGetActivities = require("./activities.test");
+const testActivities = require("./activities.test");
 
 // var assert = require("assert");
 const BASE_URL = "http://localhost:3000";
@@ -26,4 +26,6 @@ const testRoot = async () => {
 console.log("Hello Test;");
 testRoot();
 
-testGetActivities();
+testActivities.testGetActivities();
+testActivities.testGetActivity();
+testActivities.testPostActivity();

@@ -4,6 +4,8 @@ const routes = require("./api/routes");
 
 const app = express();
 
+app.use(express.json());
+
 routes(app, express);
 
 const PORT = process.env.PORT || 3000;
