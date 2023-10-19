@@ -8,6 +8,7 @@ const app = express();
 app.use(express.json());
 
 middleware.logs.useLoggers(app);
+app.use(middleware.errors.appErrorHandler);
 
 routes(app, express);
 

@@ -1,7 +1,7 @@
 const readActivities = () => {
-  throw new Error("Not implemented");
-  // const activities = [{ name: "activity1" }, { name: "activity2" }];
-  // return activities;
+  // throw new Error("Not implemented");
+  const activities = [{ name: "activity1" }, { name: "activity2" }];
+  return activities;
 };
 
 const readActivityById = (id) => {
