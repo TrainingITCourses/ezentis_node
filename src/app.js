@@ -1,12 +1,17 @@
 const express = require("express");
 
 const routes = require("./api/routes");
-
+const middleware = require("./middleware/middleware");
+const logger = middleware.logs.logger;
 const app = express();
 
 app.use(express.json());
 
+middleware.logs.useLoggers(app);
+
 routes(app, express);
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Listening on port ${PORT} at ${new Date()}`));
+const startMessage = `Listening on port ${PORT}`;
+
+app.listen(PORT, () => logger.warn(startMessage));

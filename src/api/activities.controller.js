@@ -1,4 +1,6 @@
 const activitiesService = require("./activities.service");
+const middleware = require("../middleware/middleware");
+const logger = middleware.logs.logger;
 
 const getActivities = (req, res) => {
   try {
@@ -6,6 +8,7 @@ const getActivities = (req, res) => {
     const status = activities.length > 0 ? 200 : 204;
     return res.status(status).send(activities);
   } catch (err) {
+    logger.error(err.message);
     return res.status(400).send({ message: err.message });
   }
 };
