@@ -22,7 +22,6 @@ const errorHandler = (err, req, res, next) => {
 // routes/activities.routes.js
 router
   .get("/", readAll)
-  .get("/mines", readByUser)
   .get("/:id", readById)
   .get("/:id/bookings", readBookings)
   .post("/", service.create)
@@ -48,7 +47,6 @@ const getId = (req, res, next) => {
 const control = (serviceFn) => {
   return async (req, res, next) => {
     try {
-      fillArgsWithUserId(req);
       const body = await call(req.args, serviceFn);
       const status = getStatusByMethod(req.method);
       res.status(status).json(body);
