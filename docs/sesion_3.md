@@ -4,6 +4,9 @@
 
 Install Sequelize and PostgreSQL:
 
+"sequelize": "^5.22.3",
+"sequelize-hierarchy": "^2.0.4"
+
 ```bash
 npm i pg pg-hstore sequelize
 npm i -D sequelize-cli
