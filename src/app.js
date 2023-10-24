@@ -8,9 +8,9 @@ const app = express();
 app.use(express.json());
 
 middleware.logs.useLoggers(app);
-app.use(middleware.errors.appErrorHandler);
 
 routes(app, express);
+app.use(middleware.errors.appErrorHandler);
 
 const PORT = process.env.PORT || 3000;
 const startMessage = `Listening on port ${PORT}`;

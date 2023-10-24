@@ -24,13 +24,19 @@ const testGetActivity = async () => {
 };
 
 const testPostActivity = async () => {
-  const res = await axios.post(BASE_URL, { name: "activity3" });
-  const actual = JSON.stringify(res.data);
-  const expected = JSON.stringify({ name: "activity3" });
-  if (res.data.name !== "activity3") {
-    console.log(`❌ Test POST api/activities Failed: Expected ${expected} but got ${actual}`);
-  } else {
-    console.log("✅ Test POST api/activities Passed");
+  const payload = null; // { name: "activity3" };
+  try {
+    const res = await axios.post(BASE_URL, payload);
+    const actual = JSON.stringify(res.data);
+    const expected = JSON.stringify({ name: "activity3" });
+    if (res.data.name !== "activity3") {
+      console.log(`❌ Test POST api/activities Failed: Expected ${expected} but got ${actual}`);
+    } else {
+      console.log("✅ Test POST api/activities Passed");
+    }
+  } catch (err) {
+    console.log(`🐞 Test POST api/activities Failed: ${err.response.data.message} ${err.response.status}`);
+    return;
   }
 };
 

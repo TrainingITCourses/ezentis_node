@@ -25,7 +25,13 @@ const testRoot = async () => {
 
 console.log("Hello Test;");
 testRoot();
-
-testActivities.testGetActivities();
-testActivities.testGetActivity();
-testActivities.testPostActivity();
+runTestActivities();
+function runTestActivities() {
+  try {
+    testActivities.testGetActivities();
+    testActivities.testGetActivity();
+    testActivities.testPostActivity();
+  } catch (err) {
+    console.error(err.data.message);
+  }
+}

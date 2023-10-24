@@ -1,7 +1,8 @@
+const { logger } = require("./logs");
 module.exports = control = (serviceFn) => {
   return (req, res, next) => {
     try {
-      const body = serviceFn(...req.args);
+      const body = req.args ? serviceFn(...req.args) : serviceFn();
       const status = getResponseStatus(req.method, body);
       return res.status(status).send(body);
     } catch (err) {

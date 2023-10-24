@@ -8,7 +8,7 @@ const getId = (req, res, next) => {
 
 const getBody = (req, res, next) => {
   const body = req.body;
-  if (!body) throw new Error("Body is required");
+  if (!body || Object.keys(body).length === 0) throw new Error("Body is required");
   if (!req.args) req.args = [];
   req.args.push(body);
   next();
