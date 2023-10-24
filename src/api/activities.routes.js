@@ -4,11 +4,11 @@ const validation = middleware.validation;
 const activitiesRoutes = (express) => {
   const router = express.Router();
   router
-    .get("/", activitiesController.getActivities)
-    .get("/:id", validation.getId, activitiesController.getActivity)
+    .get("/", middleware.control(activitiesService.readActivities))
+    .get("/:id", validation.getId, middleware.control(activitiesService.readActivityById))
     .get("/:id/bookings", (req, res) => res.send("GET /activities/:id/bookings"))
-    .post("/", validation.getBody, activitiesController.postActivity)
-    .put("/:id", (req, res) => res.send("PUT /activities"))
+    .post("/", validation.getBody, middleware.control(activitiesService.createActivity))
+    .put("/:id", validation.getId, validation.getBody, middleware.control(activitiesService.updateActivity))
     .delete("/:id", (req, res) => res.send("DELETE /activities"));
   return router;
 };

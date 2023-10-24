@@ -14,10 +14,16 @@ const createActivity = (activity) => {
   return { ...activity, createdAt: new Date() };
 };
 
+const updateActivity = (id, activity) => {
+  if (!id) throw new Error("Id is required");
+  return { ...activity, createdAt: new Date() };
+};
+
 const activitiesService = {
   readActivities,
   readActivityById,
   createActivity,
+  updateActivity,
 };
 
 module.exports = activitiesService;
