@@ -10,10 +10,23 @@ Curso de introducción a Node para Ezentis Octubre 2023
 # clone repository
 git clone https://github.com/TrainingITCourses/ezentis_node_dev.git
 cd ezentis_node_dev
+
 # install dependencies
 npm install
 # edit with vs code
 code .
+
+# development mode
+# run server
+npm run dev
+# run tests
+npm run dev:test
+
+# production mode
+# run server
+npm start
+# run tests
+npm test
 ```
 
 [Demo reference](https://github.com/AlbertoBasalo/xp-dev)
