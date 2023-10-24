@@ -4,6 +4,8 @@
 
 Install Sequelize and PostgreSQL:
 
+// 🐞 ToDo: make security work
+
 "sequelize": "^5.22.3",
 "sequelize-hierarchy": "^2.0.4"
 
