@@ -6,6 +6,7 @@ const logger = middleware.logs.logger;
 const app = express();
 
 app.use(express.json());
+middleware.useSecurity(app);
 
 middleware.logs.useLoggers(app);
 

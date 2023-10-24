@@ -6,6 +6,14 @@ const getId = (req, res, next) => {
   next();
 };
 
+const getUserId = (req, res, next) => {
+  const userId = req.auth?.sub;
+  if (!userId) throw new Error("UserId is required");
+  if (!req.args) req.args = [];
+  req.args.push(userId);
+  next();
+};
+
 const getBody = (req, res, next) => {
   const body = req.body;
   if (!body || Object.keys(body).length === 0) throw new Error("Body is required");
@@ -17,6 +25,7 @@ const getBody = (req, res, next) => {
 const validation = {
   getId,
   getBody,
+  getUserId,
 };
 
 module.exports = validation;

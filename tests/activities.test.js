@@ -24,7 +24,7 @@ const testGetActivity = async () => {
 };
 
 const testPostActivity = async () => {
-  const payload = null; // { name: "activity3" };
+  const payload = { name: "activity3" };
   try {
     const res = await axios.post(BASE_URL, payload);
     const actual = JSON.stringify(res.data);

@@ -9,9 +9,9 @@ const readActivityById = (id) => {
   return activity;
 };
 
-const createActivity = (activity) => {
+const createActivity = (ownerId, activity) => {
   if (!activity.name) throw new Error("Name is required");
-  return { ...activity, createdAt: new Date() };
+  return { ...activity, userId: ownerId, createdAt: new Date() };
 };
 
 const updateActivity = (id, activity) => {
