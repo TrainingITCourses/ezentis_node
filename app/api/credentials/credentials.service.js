@@ -3,6 +3,7 @@ const { db, models, utils } = shared;
 const { usersRepository } = db;
 const { AppError } = models;
 const { signUser, guardIsOwner, extractUserId } = utils.authorization;
+const { logger } = utils;
 
 const readById = async (id, userId) => {
   const current = await usersRepository.selectById(id);
@@ -24,6 +25,8 @@ const login = async (credentials) => {
 };
 
 const refresh = async (oldToken) => {
+  logger.info(`credentials.service.refreshing: ${oldToken}`);
+  // ToDo: check if the arg is valid or if it has accessToken inside
   const userId = extractUserId(oldToken);
   const user = await readById(userId);
   return getUserToken(user);
