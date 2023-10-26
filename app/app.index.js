@@ -5,8 +5,8 @@ const api = require("./api/api.router");
 const middleware = require("./middleware/middleware.index");
 const shared = require("./shared/shared.index");
 
-const logger = shared.utils.logger;
 const app = express();
+const logger = shared.utils.logger;
 
 middleware.logs.useLoggers(app);
 middleware.security.useSecurity(app);
