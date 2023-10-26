@@ -54,7 +54,8 @@ const readByEmail = async (email) => {
 
 const getUserToken = (user) => {
   return {
-    accessToken: signUser(user.id),
+    accessToken: signUser(user.id, false),
+    refreshToken: signUser(user.id, true),
     id: user.id,
   };
 };

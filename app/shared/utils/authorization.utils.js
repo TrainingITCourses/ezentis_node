@@ -5,8 +5,14 @@ const { AppError } = require("../models/models.index");
 const { JSON } = require("sequelize");
 const secret = env.JWT_SECRET;
 const expiration = { expiresIn: env.JWT_EXPIRES_IN };
+const longExpiration = { expiresIn: "1y" };
 
-const signUser = (userId) => jwt.sign({ sub: userId }, secret, expiration);
+const signUser = (userId, isRefresh) => {
+  if (isRefresh) {
+    return jwt.sign({ sub: userId }, secret, longExpiration);
+  }
+  return jwt.sign({ sub: userId }, secret, expiration);
+};
 
 const extractUserId = (token) => {
   const decoded = jwt.decode(token);
