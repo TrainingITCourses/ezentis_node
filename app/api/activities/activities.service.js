@@ -17,7 +17,8 @@ async function readById(id) {
 }
 
 async function readBookings(id, userId) {
-  const activity = await readById(id);
+  const result = await readById(id);
+  const activity = result.dataValues;
   guardIsOwner(userId, activity, "activities.service.readBookings");
   const bookings = await bookingsRepository.selectByKeyValue("activityId", id);
   activity.bookings = bookings;
@@ -26,15 +27,13 @@ async function readBookings(id, userId) {
 
 async function create(activity, userId) {
   activity.userId = userId;
-  activity.id = new Date().getTime();
-  activity.createdAt = new Date().toISOString();
   return await activitiesRepository.insert(activity);
 }
 
 async function update(id, activity, userId) {
   const current = await readById(id);
   guardIsOwner(userId, current, "activities.service.update");
-  const updated = { ...current, ...activity, updatedAt: new Date().toISOString() };
+  const updated = { ...current, ...activity };
   await activitiesRepository.update(id, updated);
   return updated;
 }

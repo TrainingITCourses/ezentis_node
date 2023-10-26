@@ -15,8 +15,8 @@ const signUser = (userId, isRefresh) => {
 };
 
 const extractUserId = (token) => {
-  const decoded = jwt.decode(token);
-  return decoded.sub;
+  const payload = jwt.decode(token);
+  return payload.sub;
 };
 
 const guardIsOwner = (userId, item, source) => {

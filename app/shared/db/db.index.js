@@ -1,9 +1,9 @@
-/** Db connections and repository clases */
-module.exports = db = {
-  /** In memory repository for activities */
-  activitiesRepository: require("./activities.repository"),
-  /** In memory repository for bookings */
-  bookingsRepository: require("./bookings.repository"),
-  /** In memory repository for users */
-  usersRepository: require("./users.repository"),
+const UserRepository = require("./user.repository");
+const ActivityRepository = require("./activity.repository");
+const BookingRepository = require("./booking.repository");
+
+module.exports = {
+  usersRepository: UserRepository(),
+  activitiesRepository: ActivityRepository(),
+  bookingsRepository: BookingRepository(),
 };

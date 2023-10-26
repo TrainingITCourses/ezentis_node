@@ -9,11 +9,12 @@ const readById = async (id, userId) => {
   const current = await usersRepository.selectById(id);
   if (!current) throw new AppError(`User with id: ${id} not found `, "NOT_FOUND", "credentials.service.readById");
   guardIsOwner(userId, current, "credentials.service.readById");
+  return current;
 };
 
 const register = async (user) => {
-  await create(user);
-  return getUserToken(user);
+  const newUser = await create(user);
+  return getUserToken(newUser);
 };
 
 const login = async (credentials) => {
@@ -24,11 +25,11 @@ const login = async (credentials) => {
   throw new AppError("Invalid credentials", "FORBIDDEN", "credentials.service.login");
 };
 
-const refresh = async (oldToken) => {
-  logger.info(`credentials.service.refreshing: ${oldToken}`);
-  // ToDo: check if the arg is valid or if it has accessToken inside
-  const userId = extractUserId(oldToken);
-  const user = await readById(userId);
+const refresh = async (userToken) => {
+  if (!userToken || !userToken.accessToken)
+    throw new AppError("Empty token", "BAD_REQUEST", "credentials.service.refresh");
+  const userId = extractUserId(userToken.accessToken);
+  const user = await readById(userId, userId);
   return getUserToken(user);
 };
 
@@ -42,8 +43,6 @@ const deleteById = async (id, userId) => {
 const create = async (user) => {
   const current = await readByEmail(user.email);
   if (current) throw new AppError("User already exist", "CONFLICT", "credentials.service.create");
-  user.id = new Date().getTime();
-  user.createdAt = new Date().toISOString();
   return await usersRepository.insert(user);
 };
 
